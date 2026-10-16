@@ -36,7 +36,7 @@ jobs:
           APP=apps/ios/OuraApp/build/sideload/Build/Products/Release-iphoneos/OuraApp.app
           test -x "$APP/OuraApp"
           /usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Info.plist"
-          lipo -verify_arch arm64 "$APP/OuraApp"
+          lipo "$APP/OuraApp" -verify_arch arm64
           mkdir -p build/ipa/Payload
           cp -R "$APP" build/ipa/Payload/
           cd build/ipa
